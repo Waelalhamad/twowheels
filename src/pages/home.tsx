@@ -4,7 +4,7 @@ import { ArrowLeft, ShieldCheck, Truck, Clock, ChevronDown, Sparkles } from "luc
 import { ProductCard } from "@/components/ProductCard";
 import { products, categories } from "@/lib/data";
 
-const marqueeItems = ["دراجات جبلية", "MTB", "دراجات سباق", "ROAD BIKES", "إكسسوارات", "GEAR", "شحن لسوريا", "SYRIA DELIVERY", "دراجات جبلية", "MTB"];
+const marqueeItems = ["توصيل لكل سوريا", "ضمان الجودة", "اطلب خلال 30 ثانية", "ORDER IN 30 SEC", "دفع عند الاستلام", "دراجات جبلية", "MTB", "دراجات سباق", "إكسسوارات أصلية", "FAST DELIVERY"];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -46,7 +46,7 @@ export default function Home() {
               className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-md border border-primary/20 px-4 py-2 rounded-full mb-6"
             >
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-primary text-xs font-bold tracking-wider">🇸🇾 متاحون الآن</span>
+              <span className="text-primary text-xs font-bold tracking-wider">اطلب دراجتك خلال 30 ثانية — بدون انتظار رسائل</span>
             </motion.div>
 
             {/* Eyebrow */}
@@ -61,7 +61,7 @@ export default function Home() {
                 variants={fadeUp} custom={2}
                 className="text-[clamp(2.8rem,6vw,7rem)] font-black leading-[0.88] tracking-tight"
               >
-                مغامرتك
+                دراجتك بتوصلك
               </motion.h1>
             </div>
             <div className="overflow-hidden mb-8">
@@ -69,13 +69,13 @@ export default function Home() {
                 variants={fadeUp} custom={3}
                 className="text-[clamp(2.8rem,6vw,7rem)] font-black leading-[0.88] tracking-tight gradient-text text-glow"
               >
-                تبدأ من هنا
+                بدون تعقيد
               </motion.h1>
             </div>
 
             {/* Body */}
-            <motion.p variants={fadeUp} custom={4} className="text-muted-foreground text-base md:text-lg max-w-md mb-10 leading-relaxed">
-              لكل مغامر ورياضي وعاشق دراجة في سوريا. نكسر الروتين ونعيش الشغف سوا.
+            <motion.p variants={fadeUp} custom={4} className="text-muted-foreground text-base md:text-lg max-w-lg mb-10 leading-relaxed">
+              اختر دراجتك، اضغط اطلب، وبتوصلك على بابك. بدون رسائل طويلة، بدون انتظار — أسرع متجر دراجات في سوريا.
             </motion.p>
 
             {/* CTAs */}
@@ -83,21 +83,21 @@ export default function Home() {
               <Link href="/products"
                 className="btn-press group inline-flex items-center gap-2.5 bg-primary text-primary-foreground px-7 py-3.5 rounded-xl font-bold text-sm tracking-wide shadow-[0_0_30px_hsl(171_36%_52%/0.35)] hover:bg-primary/90 hover:shadow-[0_0_40px_hsl(171_36%_52%/0.5)] transition-all duration-300">
                 <Sparkles size={15} />
-                تسوق الآن
+                اطلب دراجتك الآن
                 <ArrowLeft size={15} className="transition-transform group-hover:-translate-x-1" />
               </Link>
-              <Link href="/about"
+              <Link href="/products"
                 className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group">
-                <span className="border-b border-muted-foreground/40 group-hover:border-foreground pb-px transition-colors">من نحن</span>
+                <span className="border-b border-muted-foreground/40 group-hover:border-foreground pb-px transition-colors">تصفح الأسعار</span>
               </Link>
             </motion.div>
 
             {/* Stats row */}
             <motion.div variants={fadeUp} custom={6} className="flex items-center gap-8 mt-12 pt-8 border-t border-white/8">
               {[
-                { value: "+500", label: "عميل سعيد" },
-                { value: "+12", label: "منتج متاح" },
-                { value: "4.9★", label: "متوسط التقييم" },
+                { value: "+500", label: "طلب منجز" },
+                { value: "30ث", label: "وقت الطلب" },
+                { value: "4.9★", label: "رضا العملاء" },
               ].map((s, i) => (
                 <div key={i} className="text-center">
                   <div className="text-xl font-black text-primary">{s.value}</div>
@@ -139,13 +139,13 @@ export default function Home() {
               <motion.p
                 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
                 className="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-3 flex items-center gap-2">
-                <span className="w-5 h-px bg-primary inline-block" />تصفح حسب النوع
+                <span className="w-5 h-px bg-primary inline-block" />ايش تدور؟
               </motion.p>
               <motion.h2
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-4xl md:text-5xl font-black">
-                التصنيفات
+                اختر نوع دراجتك
               </motion.h2>
             </div>
             <Link href="/products"
@@ -172,7 +172,7 @@ export default function Home() {
                     <span className="text-primary text-xs font-bold tracking-widest uppercase mb-1 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">{cat.productCount} منتج</span>
                     <h3 className="text-2xl font-black text-white transition-transform duration-300 group-hover:-translate-y-1">{cat.nameAr}</h3>
                     <div className="flex items-center gap-2 mt-2 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-75">
-                      <span className="text-white/70 text-xs">تصفح الآن</span>
+                      <span className="text-white/70 text-xs">اطلب الآن</span>
                       <ArrowLeft size={12} className="text-primary" />
                     </div>
                   </div>
@@ -197,13 +197,13 @@ export default function Home() {
               <motion.p
                 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
                 className="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-3 flex items-center gap-2">
-                <span className="w-5 h-px bg-primary inline-block" />منتخبة بعناية
+                <span className="w-5 h-px bg-primary inline-block" />الأكثر طلباً هالأسبوع
               </motion.p>
               <motion.h2
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-4xl md:text-5xl font-black">
-                التشكيلة المميزة
+                دراجات بتنباع بسرعة
               </motion.h2>
             </div>
             <Link href="/products"
@@ -224,9 +224,9 @@ export default function Home() {
         <div className="container px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { icon: ShieldCheck, title: "ضمان الجودة", desc: "جميع دراجاتنا بضمان شامل ضد عيوب الصناعة مع خدمة ما بعد البيع.", number: "01" },
-              { icon: Truck, title: "شحن سريع وآمن", desc: "توصيل لجميع المحافظات السورية مع تغليف آمن لحماية الدراجة.", number: "02" },
-              { icon: Clock, title: "دعم فني متخصص", desc: "فريق الصيانة لدينا جاهز لمساعدتك وإجابة استفساراتك في أي وقت.", number: "03" },
+              { icon: ShieldCheck, title: "ما في مخاطرة", desc: "كل دراجة بضمان حقيقي. لو في أي مشكلة بالصناعة — بنحلها. نقطة.", number: "01" },
+              { icon: Truck, title: "بتوصلك على بابك", desc: "توصيل لكل المحافظات السورية. الدراجة بتوصل مغلفة وسليمة 100%.", number: "02" },
+              { icon: Clock, title: "اطلب في 30 ثانية", desc: "بدون رسائل، بدون انتظار رد. اختر، اطلب، وبنتواصل معك لتأكيد التوصيل.", number: "03" },
             ].map(({ icon: Icon, title, desc, number }, i) => (
               <motion.div key={i}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
@@ -264,22 +264,31 @@ export default function Home() {
             viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-4 py-1.5 rounded-full mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              <span className="text-primary text-xs font-bold tracking-wider">انضم لعائلتنا</span>
+              <span className="text-primary text-xs font-bold tracking-wider">سؤال؟ استفسار؟ مقارنة؟</span>
             </div>
             <h2 className="text-4xl md:text-6xl font-black mb-5 leading-tight">
-              شاركنا شغفك<br />
+              إحنا موجودين<br />
               <span className="gradient-text">على الإنستاغرام</span>
             </h2>
-            <p className="text-muted-foreground max-w-sm mx-auto mb-10 text-sm leading-relaxed">
-              ابعث رسالة لطلب الدراجة أو أي استفسار. فريقنا جاهز دايماً.
+            <p className="text-muted-foreground max-w-md mx-auto mb-4 text-sm leading-relaxed">
+              مش عارف أي دراجة تختار؟ عندك سؤال عن المقاس أو السعر؟ — راسلنا وبنرد عليك خلال دقائق.
             </p>
-            <a
-              href="https://www.instagram.com/twowheels.sy"
-              target="_blank" rel="noopener noreferrer"
-              className="btn-press inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-3.5 rounded-xl font-bold text-sm tracking-wide shadow-[0_0_30px_hsl(171_36%_52%/0.3)] hover:bg-primary/90 hover:shadow-[0_0_50px_hsl(171_36%_52%/0.45)] transition-all duration-300">
-              @twowheels.sy
-              <ArrowLeft size={15} />
-            </a>
+            <p className="text-muted-foreground/60 max-w-sm mx-auto mb-10 text-xs leading-relaxed">
+              أو اطلب مباشرة من الموقع بدون رسائل 👇
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Link href="/products"
+                className="btn-press inline-flex items-center gap-2.5 bg-primary text-primary-foreground px-8 py-3.5 rounded-xl font-bold text-sm shadow-[0_0_30px_hsl(171_36%_52%/0.3)] hover:bg-primary/90 transition-all duration-300">
+                اطلب من الموقع الآن
+                <ArrowLeft size={15} />
+              </Link>
+              <a
+                href="https://www.instagram.com/twowheels.sy"
+                target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 border border-border/60 hover:border-primary/40 text-muted-foreground hover:text-foreground px-8 py-3.5 rounded-xl font-bold text-sm transition-all duration-300">
+                راسلنا على الإنستاغرام
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
