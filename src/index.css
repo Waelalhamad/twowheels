@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --font-sans: var(--app-font-sans);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --app-font-sans: 'Tajawal', 'DM Sans', sans-serif;
+  --radius: 0.625rem;
+
+  /* Deep space dark — richer than pure black */
+  --background: 224 20% 6%;
+  --foreground: 210 20% 94%;
+  --card: 224 18% 9%;
+  --card-foreground: 210 20% 94%;
+  --popover: 224 18% 8%;
+  --popover-foreground: 210 20% 94%;
+
+  /* #5DB1A1 teal */
+  --primary: 171 36% 52%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 224 16% 13%;
+  --secondary-foreground: 210 15% 78%;
+  --muted: 224 14% 15%;
+  --muted-foreground: 220 10% 50%;
+  --accent: 171 36% 52%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 65% 52%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 224 16% 14%;
+  --input: 224 16% 12%;
+  --ring: 171 36% 52%;
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body { @apply font-sans antialiased bg-background text-foreground; }
+}
+
+/* ── Responsive container ── */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px)  { .container { max-width: 640px; } }
+@media (min-width: 768px)  { .container { max-width: 768px; padding-left: 1.5rem; padding-right: 1.5rem; } }
+@media (min-width: 1024px) { .container { max-width: 1024px; } }
+@media (min-width: 1280px) { .container { max-width: 1280px; padding-left: 2rem; padding-right: 2rem; } }
+@media (min-width: 1536px) { .container { max-width: 1400px; } }
+@media (min-width: 1920px) { .container { max-width: 1600px; } }
+
+/* ── Subtle noise grain ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary) / 0.7); }
+
+/* ── Glow utilities ── */
+.glow-primary {
+  box-shadow: 0 0 24px hsl(171 36% 52% / 0.2), 0 0 60px hsl(171 36% 52% / 0.06);
+}
+.text-glow {
+  text-shadow: 0 0 60px hsl(171 36% 52% / 0.45);
+}
+
+/* ── Gradient text ── */
+.gradient-text {
+  background: linear-gradient(135deg, #5DB1A1 0%, #a8e6dd 50%, #5DB1A1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glass card ── */
+.glass {
+  background: hsl(224 18% 9% / 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid hsl(224 16% 18% / 0.6);
+}
+
+/* ── Nav active underline ── */
+.nav-link-underline { position: relative; }
+.nav-link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -6px; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, hsl(171 36% 52%), transparent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 99px;
+}
+.nav-link-underline:hover::after,
+.nav-link-active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ── Marquee ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 22s linear infinite; }
+.animate-marquee:hover { animation-play-state: paused; }
+
+/* ── Shimmer skeleton ── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--secondary)) 50%, hsl(var(--muted)) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+}
+
+/* ── Card hover lift ── */
+.card-hover {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px hsl(224 20% 3% / 0.6), 0 0 0 1px hsl(171 36% 52% / 0.15);
+}
+
+/* ── Button press ── */
+.btn-press {
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.btn-press:active {
+  transform: scale(0.97);
+}
+
+/* ── Image zoom container ── */
+.img-zoom img {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.img-zoom:hover img {
+  transform: scale(1.07);
+}
